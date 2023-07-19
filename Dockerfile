@@ -1,10 +1,10 @@
-FROM rust:1.51.0 as build
+FROM rust:1.65.0-buster as build
 ENV NVM_DIR=/usr/local/nvm \
-    NODE_VERSION=14.17.4
+    NODE_VERSION=14.21.3
 RUN groupadd --gid 1000 jenkins && \
     adduser --uid 1000 --home /tonlabs/TON-SDK --disabled-password --ingroup jenkins --system jenkins && \
     mkdir -p /usr/local/nvm && \
-    curl -sSLfo- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash && \
+    curl -sSLfo- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash && \
     \. "$NVM_DIR/nvm.sh" &&\
     nvm install $NODE_VERSION --latest-npm --default && \
     nvm alias default $NODE_VERSION && \
